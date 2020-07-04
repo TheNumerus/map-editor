@@ -1,0 +1,96 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://SC_GUI.gd" type="Script" id=1]
+
+[node name="Control" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 1260.0
+margin_bottom = 700.0
+mouse_filter = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+margin_right = 1260.0
+margin_bottom = 672.0
+mouse_filter = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer3"]
+margin_right = 466.0
+margin_bottom = 672.0
+mouse_filter = 2
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer3/HBoxContainer2"]
+margin_right = 466.0
+margin_bottom = 36.0
+columns = 2
+
+[node name="SizeXLabel" type="Label" parent="VBoxContainer/HBoxContainer3/HBoxContainer2/GridContainer"]
+margin_top = 1.0
+margin_right = 62.0
+margin_bottom = 15.0
+text = "Size X: 40"
+
+[node name="SizeXSlider" type="HSlider" parent="VBoxContainer/HBoxContainer3/HBoxContainer2/GridContainer"]
+margin_left = 66.0
+margin_right = 466.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 400, 0 )
+min_value = 1.0
+value = 40.0
+tick_count = 10
+
+[node name="SizeYLabel" type="Label" parent="VBoxContainer/HBoxContainer3/HBoxContainer2/GridContainer"]
+margin_top = 21.0
+margin_right = 62.0
+margin_bottom = 35.0
+text = "Size Y: 30"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SizeYSlider" type="HSlider" parent="VBoxContainer/HBoxContainer3/HBoxContainer2/GridContainer"]
+margin_left = 66.0
+margin_top = 20.0
+margin_right = 466.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 400, 0 )
+min_value = 1.0
+value = 30.0
+tick_count = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 676.0
+margin_right = 1260.0
+margin_bottom = 700.0
+mouse_filter = 2
+
+[node name="Button" type="CheckBox" parent="VBoxContainer/HBoxContainer"]
+margin_right = 97.0
+margin_bottom = 24.0
+text = "Pause Map"
+
+[node name="ButtonGenerate" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 101.0
+margin_right = 203.0
+margin_bottom = 24.0
+text = "Generate Map"
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
+timeout = 10
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer3/HBoxContainer2/GridContainer/SizeXSlider" to="." method="_on_size_x_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer3/HBoxContainer2/GridContainer/SizeYSlider" to="." method="_on_size_y_value_changed"]
+[connection signal="toggled" from="VBoxContainer/HBoxContainer/Button" to="." method="_on_Button_toggled"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonGenerate" to="." method="_on_ButtonGenerate_pressed"]
