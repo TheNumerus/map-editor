@@ -8,13 +8,14 @@
 
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( -0.131547, 0.624067, -0.770218, 0, 0.77697, 0.629538, 0.99131, 0.0828139, -0.102208, -0.115789, 3.70416, -2.60672 )
+light_color = Color( 1, 0.996078, 0.917647, 1 )
 shadow_enabled = true
 shadow_bias = 0.08
 directional_shadow_mode = 0
-directional_shadow_normal_bias = 0.0
+directional_shadow_normal_bias = 0.01
 directional_shadow_bias_split_scale = 0.0
 directional_shadow_depth_range = 1
-directional_shadow_max_distance = 20.0
+directional_shadow_max_distance = 50.0
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )

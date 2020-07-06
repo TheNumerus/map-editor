@@ -1,10 +1,11 @@
 [gd_resource type="VisualShader" load_steps=12 format=2]
 
+[sub_resource type="VisualShaderNodeScalarConstant" id=1]
+
 [sub_resource type="VisualShaderNodeScalarConstant" id=2]
+constant = 0.2
 
-[sub_resource type="VisualShaderNodeScalarConstant" id=3]
-
-[sub_resource type="VisualShaderNodeExpression" id=12]
+[sub_resource type="VisualShaderNodeExpression" id=3]
 size = Vector2( 250, 150 )
 expression = "albedo = COLOR.xyz"
 
@@ -95,7 +96,7 @@ void fragment() {
 	float n_out3p0 = 0.000000;
 
 // Scalar:4
-	float n_out4p0 = 0.000000;
+	float n_out4p0 = 0.200000;
 
 // Output:0
 	ALBEDO = n_out5p0;
@@ -109,7 +110,7 @@ void light() {
 
 }
 "
-graph_offset = Vector2( -289, 36 )
+graph_offset = Vector2( -207, 145 )
 nodes/vertex/0/position = Vector2( 740, 180 )
 nodes/vertex/2/node = SubResource( 9 )
 nodes/vertex/2/position = Vector2( -220, 220 )
@@ -138,11 +139,11 @@ nodes/vertex/14/node = SubResource( 8 )
 nodes/vertex/14/position = Vector2( -240, 700 )
 nodes/vertex/connections = PoolIntArray( 3, 0, 0, 1, 4, 0, 10, 1, 2, 0, 10, 0, 10, 0, 0, 0, 12, 0, 10, 2, 13, 0, 10, 3, 14, 0, 10, 4 )
 nodes/fragment/0/position = Vector2( 580, 160 )
-nodes/fragment/3/node = SubResource( 2 )
+nodes/fragment/3/node = SubResource( 1 )
 nodes/fragment/3/position = Vector2( -60, 280 )
-nodes/fragment/4/node = SubResource( 3 )
+nodes/fragment/4/node = SubResource( 2 )
 nodes/fragment/4/position = Vector2( -60, 340 )
-nodes/fragment/5/node = SubResource( 12 )
+nodes/fragment/5/node = SubResource( 3 )
 nodes/fragment/5/position = Vector2( -20, 80 )
 nodes/fragment/5/size = Vector2( 250, 150 )
 nodes/fragment/5/input_ports = ""

@@ -8,6 +8,8 @@ var pressed = false
 var right_pressed = false
 var zoom_level = 0
 
+var rot = 0
+
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		var button_event = (event as InputEventMouseButton)
@@ -28,7 +30,13 @@ func _unhandled_input(event):
 	elif event is InputEventMouseMotion:
 		var motion_event = (event as InputEventMouseMotion)
 		if pressed:
-			translate((Vector3(-motion_event.relative.x * camera_speed, 0, -motion_event.relative.y * camera_speed)))
+			var pan_vector = Vector2(-motion_event.relative.x * camera_speed, -motion_event.relative.y * camera_speed)
+			var t = Transform2D((rot / 180.0 * PI), Vector2(0, 0))
+			pan_vector = t.basis_xform_inv(pan_vector)
+			translate((Vector3(pan_vector.x, 0, pan_vector.y)))
 		elif right_pressed:
-			var rotate_delta = -motion_event.relative.y / 5
-			$Pivot.rotation_degrees.x = clamp($Pivot.rotation_degrees.x + rotate_delta, 0, 85)
+			var rotate_delta_y = -motion_event.relative.y / 5
+			$Pivot.rotation_degrees.x = clamp($Pivot.rotation_degrees.x + rotate_delta_y, 0, 85)
+			var rotate_delta_x = -motion_event.relative.x / 5
+			rot = $Pivot.rotation_degrees.y + rotate_delta_x
+			$Pivot.rotation_degrees.y = rot

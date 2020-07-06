@@ -26,5 +26,5 @@ window/size/height=720
 
 [rendering]
 
-quality/filters/msaa=1
+quality/filters/msaa=2
 environment/default_environment="res://default_env.tres"
